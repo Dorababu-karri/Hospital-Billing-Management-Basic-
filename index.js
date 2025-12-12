@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const session = require("express-session");
 
 const LoginCollection = require("./mongo");
