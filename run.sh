@@ -1,1 +1,1 @@
-npx nodemon index.js
+npm run dev

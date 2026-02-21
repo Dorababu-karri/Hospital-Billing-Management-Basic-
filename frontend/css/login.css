@@ -1,0 +1,47 @@
+.auth-links {
+  margin-top: var(--space-3);
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  font-size: var(--fs-sm);
+}
+
+#error-message {
+  color: var(--danger);
+  min-height: var(--space-5);
+  margin-top: var(--space-2);
+}
+
+.brand-mark {
+  display: inline-block;
+  padding: 9px var(--space-3);
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, #e5f1ff, #d5e8ff);
+  color: #0f4b8b;
+  font-weight: 800;
+  font-size: 1.05rem;
+  margin-bottom: var(--space-3);
+  letter-spacing: 0.02em;
+}
+
+.auth-subtitle {
+  color: var(--muted);
+  margin: var(--space-1) 0 var(--section-gap);
+  font-size: var(--fs-sm);
+  max-width: 34ch;
+}
+
+.small-link {
+  color: var(--muted);
+  font-size: var(--fs-sm);
+  margin-top: var(--space-4);
+}
+
+#login-form select {
+  background: #fbfdff;
+}
+
+#login-form {
+  display: grid;
+  gap: var(--space-1);
+}

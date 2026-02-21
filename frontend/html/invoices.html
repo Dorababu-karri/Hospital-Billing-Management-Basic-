@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Believein | Invoices</title>
+  <link rel="stylesheet" href="../css/theme.css?v=20260221" />
+  <link rel="stylesheet" href="../css/invoices.css?v=20260221" />
+  <script src="../js/invoices.js?v=20260221" defer></script>
+</head>
+<body>
+  <div class="app-nav-wrap">
+    <nav class="app-nav">
+      <a href="dashboard.html" class="nav-home">Dashboard</a>
+      <a href="admit.html">Admit Patient</a>
+      <a href="patients.html">Patients</a>
+      <a href="invoices.html" class="active">Invoices</a>
+      <a href="/logout">Logout</a>
+    </nav>
+  </div>
+  <main class="table-page">
+    <header class="table-header">
+      <p class="eyebrow">Believein Billing</p>
+      <h1>Invoices</h1>
+    </header>
+
+    <section class="table-card">
+      <div class="search-bar">
+        <input type="text" id="search" placeholder="Search by Patient ID or Name" />
+        <button id="search-btn">Search</button>
+      </div>
+
+      <table class="invoice-table">
+        <thead>
+          <tr>
+            <th>Patient ID</th>
+            <th>Patient Name</th>
+            <th>Total Amount</th>
+            <th>Date</th>
+            <th>Download</th>
+          </tr>
+        </thead>
+        <tbody id="invoice-table-body"></tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>
+

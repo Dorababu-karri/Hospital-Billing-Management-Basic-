@@ -1,0 +1,84 @@
+.form-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: var(--page-pad-y) var(--page-pad-x);
+}
+
+.form-card {
+  width: min(760px, 100%);
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: var(--card-pad);
+  border: var(--panel-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.form-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 6px;
+  background: linear-gradient(90deg, #0f6fc9, #1f9d8a, #ff7a00);
+}
+
+#billing-form {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  align-items: center;
+  column-gap: var(--space-3);
+  row-gap: var(--space-3);
+}
+
+#billing-form label {
+  margin: 0;
+  color: #1e3a5f;
+}
+
+#status-message {
+  min-height: var(--space-5);
+  margin: var(--space-2) 0 var(--space-4);
+  font-weight: 700;
+}
+
+#room-cost-section {
+  display: none;
+  grid-column: 1 / -1;
+  grid-template-columns: 170px 1fr;
+  align-items: center;
+  column-gap: var(--space-3);
+  margin-top: var(--space-1);
+}
+
+#room-cost-section label { margin: 0; }
+
+#total-bill-display {
+  grid-column: 1 / -1;
+  margin: var(--space-1) 0;
+  font-weight: 700;
+  color: var(--brand-dark);
+  background: #eef6ff;
+  border: 1px solid #d5e7ff;
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+}
+
+.actions {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin-top: var(--space-1);
+  padding-top: var(--space-3);
+  border-top: 1px solid #e6edf9;
+}
+
+.btn:last-child { background: linear-gradient(130deg, var(--brand), #1a73d9); }
+
+@media (max-width: 700px) {
+  #billing-form { grid-template-columns: 1fr; }
+  #room-cost-section { grid-template-columns: 1fr; }
+  .actions { grid-template-columns: 1fr; }
+}

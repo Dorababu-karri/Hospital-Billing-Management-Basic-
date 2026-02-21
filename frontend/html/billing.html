@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Believein | Billing</title>
+  <link rel="stylesheet" href="../css/theme.css?v=20260221" />
+  <link rel="stylesheet" href="../css/billing.css?v=20260221" />
+  <script src="../js/billing.js?v=20260221" defer></script>
+</head>
+<body>
+  <div class="app-nav-wrap">
+    <nav class="app-nav">
+      <a href="dashboard.html" class="nav-home">Dashboard</a>
+      <a href="admit.html">Admit Patient</a>
+      <a href="patients.html">Patients</a>
+      <a href="invoices.html" class="active">Invoices</a>
+      <a href="/logout">Logout</a>
+    </nav>
+  </div>
+  <main class="form-page">
+    <section class="form-card">
+      <p class="eyebrow">Believein Discharge</p>
+      <h1>Generate Billing</h1>
+      <div id="status-message"></div>
+
+      <form id="billing-form" action="/billing" method="post">
+        <label for="patientId">Patient ID</label>
+        <input type="text" id="patientId" name="patientId" readonly required />
+
+        <label for="patientName">Patient Name</label>
+        <input type="text" id="patientName" name="patientName" readonly required />
+
+        <label for="mobileNumber">Mobile Number</label>
+        <input type="text" id="mobileNumber" name="mobileNumber" readonly required />
+
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" readonly required />
+
+        <label for="doctorName">Doctor Name</label>
+        <input type="text" id="doctorName" name="doctorName" readonly required />
+
+        <label for="labTests">Lab Tests (Cost)</label>
+        <input type="number" id="labTests" name="labTests" min="0" required />
+
+        <label for="medicines">Medicines (Cost)</label>
+        <input type="number" id="medicines" name="medicines" min="0" required />
+
+        <label for="consultationFees">Consultation Fees</label>
+        <input type="number" id="consultationFees" name="consultationFees" min="0" required />
+
+        <label for="roomTaken">Room Taken?</label>
+        <select id="roomTaken" name="roomTaken" required>
+          <option value="no">No</option>
+          <option value="yes">Yes</option>
+        </select>
+
+        <div id="room-cost-section">
+          <label for="roomCost">Room Cost</label>
+          <input type="number" id="roomCost" name="roomCost" min="0" />
+        </div>
+
+        <p id="total-bill-display"></p>
+        <div class="actions">
+          <button type="button" class="btn" id="total-bill-btn">Calculate Total</button>
+          <button type="submit" class="btn">Generate Bill</button>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
+

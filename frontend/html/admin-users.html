@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Believein | User Management</title>
+  <link rel="stylesheet" href="../css/theme.css?v=20260221" />
+  <link rel="stylesheet" href="../css/admin-users.css?v=20260221" />
+  <script src="../js/admin-users.js?v=20260221" defer></script>
+</head>
+<body>
+  <div class="app-nav-wrap">
+    <nav class="app-nav">
+      <a href="/html/dashboard.html" class="nav-home">Dashboard</a>
+      <a href="/html/admit.html">Admit Patient</a>
+      <a href="/html/patients.html">Patients</a>
+      <a href="/html/invoices.html">Invoices</a>
+      <a href="/logout">Logout</a>
+    </nav>
+  </div>
+  <main class="admin-page">
+    <header class="admin-header">
+      <p class="eyebrow">Believein Admin</p>
+      <h1>Access Management</h1>
+      <a href="/html/dashboard.html" class="back-link">Back to Dashboard</a>
+    </header>
+
+    <section class="admin-grid">
+      <article class="card">
+        <h2>Create User</h2>
+        <form id="create-user-form">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required />
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" required />
+
+          <label for="role">Role</label>
+          <select id="role" name="role">
+            <option value="billing_staff">Billing Staff</option>
+            <option value="admin">Admin</option>
+          </select>
+
+          <button type="submit">Create User</button>
+        </form>
+        <p id="status-message"></p>
+      </article>
+
+      <article class="card">
+        <h2>Existing Users</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody id="users-table-body"></tbody>
+        </table>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
+

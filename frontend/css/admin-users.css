@@ -1,0 +1,99 @@
+.admin-page {
+  min-height: 100vh;
+  padding: var(--page-pad-y) var(--page-pad-x);
+}
+
+.admin-header {
+  max-width: var(--container-lg);
+  margin: 0 auto var(--section-gap);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.admin-grid {
+  max-width: var(--container-lg);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: var(--space-4);
+}
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: var(--card-pad);
+  border: var(--panel-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 5px;
+  background: linear-gradient(90deg, #0f6fc9, #1f9d8a);
+}
+
+.card h2 {
+  margin-bottom: var(--space-3);
+}
+
+#create-user-form {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  align-items: center;
+  row-gap: var(--space-3);
+  column-gap: var(--space-3);
+}
+
+#create-user-form label {
+  margin: 0;
+  color: #1e3a5f;
+}
+
+#create-user-form button {
+  grid-column: 1 / -1;
+  margin-top: var(--space-2);
+}
+
+#status-message {
+  min-height: var(--space-5);
+  margin-top: var(--space-3);
+  font-weight: 600;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  padding: var(--table-cell-pad-y) var(--table-cell-pad-x);
+}
+
+th {
+  background: linear-gradient(180deg, #f1f7ff, #e6f0ff);
+  color: #124886;
+  font-weight: 700;
+}
+
+tbody tr:hover {
+  background: #f7fbff;
+}
+
+@media (max-width: 900px) {
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #create-user-form {
+    grid-template-columns: 1fr;
+  }
+}

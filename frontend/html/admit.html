@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Believein | Admit Patient</title>
+  <link rel="stylesheet" href="../css/theme.css?v=20260221" />
+  <link rel="stylesheet" href="../css/admit.css?v=20260221" />
+  <script src="../js/admit.js?v=20260221" defer></script>
+</head>
+<body>
+  <div class="app-nav-wrap">
+    <nav class="app-nav">
+      <a href="dashboard.html" class="nav-home">Dashboard</a>
+      <a href="admit.html" class="active">Admit Patient</a>
+      <a href="patients.html">Patients</a>
+      <a href="invoices.html">Invoices</a>
+      <a href="/logout">Logout</a>
+    </nav>
+  </div>
+  <main class="form-page">
+    <section class="form-card">
+      <p class="eyebrow">Believein Admissions</p>
+      <h1>Admit New Patient</h1>
+      <p id="error-message"></p>
+      <form id="admit-form" action="/admit" method="post">
+        <div class="grid">
+          <label for="pid">Patient ID</label>
+          <input type="text" id="pid" name="patientId" placeholder="Auto-generated" readonly required />
+
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="patientName" placeholder="Patient full name" required />
+
+          <label for="mobile">Mobile Number</label>
+          <input type="tel" id="mobile" name="mobileNumber" placeholder="10-digit mobile" required />
+
+          <label for="age">Age</label>
+          <input type="number" id="age" name="patientAge" min="1" max="120" required />
+
+          <label for="gender">Gender</label>
+          <select id="gender" name="patientGender" required>
+            <option value="" selected disabled>Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+
+          <label for="date">Date</label>
+          <input type="date" id="date" name="dateOfAdmission" readonly required />
+
+          <label for="doctor">Doctor</label>
+          <select id="doctor" name="doctorName" required>
+            <option value="" selected disabled>Select</option>
+            <option value="Dr. Ashok">Dr. Ashok</option>
+            <option value="Dr. P. Kishore">Dr. P. Kishore</option>
+            <option value="Dr. E. Thomas">Dr. E. Thomas</option>
+            <option value="Dr. MD. Abrar">Dr. MD. Abrar</option>
+            <option value="Dr. A. Jeeva">Dr. A. Jeeva</option>
+          </select>
+
+          <label for="condition">Medical Condition</label>
+          <textarea id="condition" name="medicalCondition" placeholder="Short summary of condition" required></textarea>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="submit-btn">Submit Admission</button>
+          <button type="button" class="home-btn" onclick="location.href='dashboard.html'">Back to Dashboard</button>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
+

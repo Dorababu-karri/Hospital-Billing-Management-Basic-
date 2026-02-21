@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Believein | Dashboard</title>
+  <link rel="stylesheet" href="../css/theme.css?v=20260221" />
+  <link rel="stylesheet" href="../css/dashboard.css?v=20260221" />
+  <script src="../js/dashboard.js?v=20260221" defer></script>
+</head>
+<body>
+  <div class="dashboard-shell">
+    <aside class="sidebar">
+      <h2 class="hospital-name">Believein Hospitals</h2>
+      <p id="current-user" class="user-pill"></p>
+      <nav>
+        <a href="dashboard.html" class="active">Dashboard</a>
+        <a href="admit.html">Admit Patient</a>
+        <a href="patients.html">Patients</a>
+        <a href="invoices.html">Invoices</a>
+        <a href="/admin/users" id="admin-users-link" class="u-hidden">User Management</a>
+        <a href="/logout">Logout</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <header>
+        <p class="eyebrow">Overview</p>
+        <h1>Believein Command Center</h1>
+      </header>
+
+      <section class="stats">
+        <article class="stat-card total">
+          <h3>Total Patients</h3>
+          <p id="total-patients">0</p>
+        </article>
+        <article class="stat-card admitted">
+          <h3>Admitted</h3>
+          <p id="admitted-patients">0</p>
+        </article>
+        <article class="stat-card discharged">
+          <h3>Discharged</h3>
+          <p id="discharged-patients">0</p>
+        </article>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
+

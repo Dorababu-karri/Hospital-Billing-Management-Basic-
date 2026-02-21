@@ -1,17 +1,10 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/billing")
-.then(() => {
-    console.log("mongoose connected");
-})
-.catch((e) => {
-    console.log("failed to connect");
-});
-
-const LoginSchema = new mongoose.Schema({
+const patientSchema = new mongoose.Schema({
     patientId: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     patientName: {
         type: String,
@@ -37,11 +30,11 @@ const LoginSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    mobileNumber: {                      
+    mobileNumber: {
         type: String,
         required: true
     }
 });
 
-const PatientDetails = mongoose.model('PatientDetails', LoginSchema);
-module.exports = PatientDetails;
+const Patient = mongoose.model("Patient", patientSchema);
+module.exports = Patient;

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Believein | Login</title>
+  <link rel="stylesheet" href="../css/theme.css?v=20260221" />
+  <link rel="stylesheet" href="../css/login.css?v=20260221" />
+  <script src="../js/login.js?v=20260221" defer></script>
+</head>
+<body class="auth-page">
+  <main class="auth-shell">
+    <section class="auth-card">
+      <div class="brand-mark">Believein Hospitals</div>
+      <p class="eyebrow">Digital Billing Platform</p>
+      <h1>Sign In</h1>
+      <p class="auth-subtitle">Fast, secure access for administrators and billing staff.</p>
+      <form id="login-form" action="/login1" method="post">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required />
+
+        <label for="role">Role</label>
+        <select id="role" name="role" required>
+          <option value="" selected disabled>Select role</option>
+          <option value="admin">Admin</option>
+          <option value="billing_staff">Billing Staff</option>
+        </select>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required />
+
+        <p id="error-message"></p>
+        <input type="submit" value="Login" />
+
+        <p class="small-link">Contact admin for account setup or password reset.</p>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
+

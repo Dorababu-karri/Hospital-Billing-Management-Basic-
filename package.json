@@ -1,10 +1,11 @@
 {
   "name": "rfp",
-  "version": "1.0.0",
-  "description": "A web-based application for managing patient admissions, viewing admitted patients, generating bills/invoices, and handling user authentication (signup, login, password reset).",
-  "main": "index.js",
+  "version": "1.1.0",
+  "description": "Hospital billing management system with segregated frontend and backend structure.",
+  "main": "backend/index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node backend/index.js",
+    "dev": "npx nodemon backend/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

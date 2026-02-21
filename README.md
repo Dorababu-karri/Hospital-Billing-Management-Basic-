@@ -1,217 +1,87 @@
-# 🏥 Hospital Billing Management System
+# Believein Billing Management System
 
-A web-based application for managing patient admissions, viewing admitted patients, generating bills/invoices, and handling user authentication (signup, login, password reset).
+This project is now segregated into `frontend` and `backend`.
 
----
+## Project Structure
 
-##  Features
-
-###  Authentication
-
-* User Signup
-* Login
-* Reset Password
-
-###  Patient Management
-
-* Admit a new patient
-* View list of admitted patients
-* Discharge a patient
-
-###  Billing System
-
-* Bill generation with lab tests, medicines, consultation, room charges
-* Auto calculated total bill
-* Download invoice as PDF (via browser print)
-* List all bills & invoices
-
-###  Dashboard
-
-* Total Patients
-* Admitted Patients
-* Discharged Patients
-
----
-
-#  Tech Stack
-
-| Layer    | Technology               |
-| -------- | ------------------------ |
-| Frontend | HTML, CSS, JavaScript    |
-| Backend  | Node.js + Express        |
-| Database | MongoDB                  |
-| Runtime  | Nodemon for auto-restart |
-
----
-
-#  Installation & Setup Guide
-
-##  **Install Node.js**
-
-Download & install from:
-[https://nodejs.org/](https://nodejs.org/)
-
-Check installation:
-
-```sh
-node -v
-npm -v
+```text
+rfp/
+  frontend/
+    html/
+    css/
+    js/
+    assets/
+  backend/
+    index.js           # Express server and API routes
+    config/db.js       # MongoDB connection
+    models/            # Mongoose models (user, patient, billing)
+  package.json
+  run.sh
 ```
 
----
+## Prerequisites
 
-##  **Install MongoDB**
+- Node.js 18+
+- MongoDB running locally on `mongodb://127.0.0.1:27017/billing`
+  - Or set `MONGO_URI` in `.env`
 
-### 🔹 Option A: Install Local MongoDB Server
+## Environment Variables (optional)
 
-Download from:
-[https://www.mongodb.com/try/download/community](https://www.mongodb.com/try/download/community)
+Create `.env` in the project root:
 
-After installation, start MongoDB service:
-
-**Windows**
-
-```sh
-net start MongoDB
+```env
+PORT=3000
+MONGO_URI=mongodb://127.0.0.1:27017/billing
+SESSION_SECRET=change-this-secret
 ```
 
-**macOS / Linux**
+## Install
 
-```sh
-sudo systemctl start mongod
+```bash
+npm install
 ```
 
-###  Option B: Use MongoDB Atlas (Cloud)
+## Run
 
-1. Go to [https://www.mongodb.com/atlas](https://www.mongodb.com/atlas)
-2. Create free cluster
-3. Create database user (username & password)
-4. Get connection string like:
+Development mode (auto-restart):
 
-```
-mongodb+srv://<user>:<password>@cluster0.mongodb.net/hospital
+```bash
+npm run dev
 ```
 
----
+Production mode:
 
-## 3️⃣ **Clone or Add Project Files**
-
-Inside your folder ensure `index.js` exists (backend file).
-
----
-
-## 4️⃣ **Install all required npm packages**
-
-Open terminal in the project folder:
-
-```sh
-npm install express mongoose cors body-parser nodemon
+```bash
+npm start
 ```
 
----
+Or run:
 
-## 5️⃣ **Configure MongoDB Connection**
-
-Inside `index.js` (or `indes.js` in your command), include:
-
-```js
-const mongoose = require("mongoose");
-
-mongoose.connect("mongodb://127.0.0.1:27017/hospitalDB") 
-// or your MongoDB Atlas URL
-.then(() => console.log("MongoDB connected"))
-.catch(err => console.log("MongoDB error:", err));
+```bash
+./run.sh
 ```
 
----
+## Open in Browser
 
-##  **Run the App**
+- `http://localhost:3000/html/login.html`
 
-```sh
-npx nodemon index.js
-```
+## Main API Routes
 
----
+- `POST /login1`
+- `POST /for` (authenticated users)
+- `POST /admit` (authenticated users)
+- `POST /billing` (authenticated users)
+- `GET /patients` (authenticated users)
+- `GET /billing-data` (authenticated users)
+- `GET /stats` (authenticated users)
+- `GET /me` (authenticated users)
+- `GET /admin/users` (admin only)
+- `GET /admin/users/list` (admin only)
+- `POST /admin/users` (admin only)
+- `GET /logout`
 
-#  Usage Instructions
+## Account Provisioning
 
-### 1. Open browser
+- Public signup is disabled.
+- Admins create billing users from `http://localhost:3000/admin/users`.
 
-```
-http://localhost:3000/login1.html
-```
-
-### 2. Login or Signup
-
-* Signup → `/signup`
-* Login → `/login1`
-
-### 3. Dashboard
-
-Shows patient statistics.
-
-### 4. Admit Patient
-
-`admit.html`
-
-### 5. View Admitted Patients
-
-`viewpat.html`
-
-* Click **Discharge** to go to billing.
-
-### 6. Billing Interface
-
-`billGen.html`
-
-* Enter details
-* Calculate total
-* Submit
-* Redirects to invoice record
-
-### 7. View Bills / Download Invoice
-
-`bills-invoices.html`
-
----
-
-# 📡 Backend API Routes (Summary)
-
-| Route           | Method | Description           |
-| --------------- | ------ | --------------------- |
-| `/signup`       | POST   | Register user         |
-| `/login1`       | POST   | User login            |
-| `/for`          | POST   | Reset password        |
-| `/admit`        | POST   | Admit patient         |
-| `/patients`     | GET    | Get admitted patients |
-| `/billing`      | POST   | Store billing details |
-| `/billing-data` | GET    | Fetch all bills       |
-| `/stats`        | GET    | Dashboard stats       |
-
----
-
-#  Testing Database Connection
-
-Run:
-
-```js
-mongoose.connection.once("open", () => {
-    console.log("MongoDB connection successful.");
-});
-```
-
-Then start server:
-
-```sh
-npx nodemon indes.js
-```
-
----
-
-#  License
-
-This project is **free to use and modify**.
-
----
-
- 
