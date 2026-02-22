@@ -8,6 +8,9 @@ async function connectDB() {
     }
 
     const mongoUri = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/billing";
+    if (!mongoUri) {
+        throw new Error("MONGO_URI is not configured. Set it in the .env file.");
+    }
 
     await mongoose.connect(mongoUri);
     connected = true;

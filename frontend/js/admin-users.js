@@ -1,10 +1,15 @@
 async function loadUsers() {
     try {
         const response = await fetch("/admin/users/list");
-        const usersResult = await response.json();
-
         const usersTableBody = document.getElementById("users-table-body");
         usersTableBody.innerHTML = "";
+
+        if (response.status === 401 || response.status === 403) {
+            usersTableBody.innerHTML = '<tr><td colspan="3">Admin access required. Please login as admin.</td></tr>';
+            return;
+        }
+
+        const usersResult = await response.json();
 
         if (!usersResult.success) {
             usersTableBody.innerHTML = '<tr><td colspan="3">Failed to load users</td></tr>';
@@ -44,6 +49,12 @@ document.getElementById("create-user-form").addEventListener("submit", async (ev
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)
         });
+
+        if (response.status === 401 || response.status === 403) {
+            statusMessage.textContent = "Admin access required. Please login again.";
+            statusMessage.style.color = "#be2d2d";
+            return;
+        }
 
         const createUserResult = await response.json();
         statusMessage.textContent = createUserResult.message;

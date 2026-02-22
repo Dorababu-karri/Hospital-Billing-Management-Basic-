@@ -11,7 +11,9 @@ const Billing = require("./models/billing");
 const Counter = require("./models/counter");
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = Number(process.env.PORT || 3000);
+const isProduction = process.env.NODE_ENV === "production";
+const sessionSecret = process.env.SESSION_SECRET || "secure-secret-key";
 
 const PATIENT_ID_KEY = "patientId";
 
@@ -94,10 +96,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
     session({
-        secret: process.env.SESSION_SECRET || "secure-secret-key",
+        secret: sessionSecret,
         resave: false,
         saveUninitialized: false,
-        cookie: { secure: false }
+        cookie: {
+            secure: isProduction,
+            httpOnly: true,
+            sameSite: "lax"
+        }
     })
 );
 
@@ -117,78 +123,15 @@ app.use("/html/patients.html", requireAuth);
 app.use("/html/billing.html", requireAuth);
 app.use("/html/invoices.html", requireAuth);
 app.use("/html/reset-password.html", requireAuth);
-app.use("/html/signup.html", (req, res) => res.redirect("/html/login.html"));
 app.use("/html/admin-users.html", requireRole("admin"));
 
 app.use(express.static(publicPath));
-app.get("/login1.html", (req, res) => {
-    return res.redirect("/html/login.html");
-});
-
-app.get("/for.html", (req, res) => {
-    return res.redirect("/html/reset-password.html");
-});
-
-app.get("/viewpat.html", (req, res) => {
-    return res.redirect("/html/patients.html");
-});
-
-app.get("/billGen.html", (req, res) => {
-    return res.redirect("/html/billing.html");
-});
-
-app.get("/bills-invoices.html", (req, res) => {
-    return res.redirect("/html/invoices.html");
-});
-
-app.get("/login.html", (req, res) => {
-    return res.redirect("/html/login.html");
-});
-
-app.get("/reset-password.html", (req, res) => {
-    return res.redirect("/html/reset-password.html");
-});
-
-app.get("/patients.html", (req, res) => {
-    return res.redirect("/html/patients.html");
-});
-
-app.get("/billing.html", (req, res) => {
-    return res.redirect("/html/billing.html");
-});
-
-app.get("/invoices.html", (req, res) => {
-    return res.redirect("/html/invoices.html");
-});
 
 app.get("/", (req, res) => {
     if (req.session.user) {
         return res.redirect("/html/dashboard.html");
     }
     return res.sendFile(path.join(publicPath, "html", "login.html"));
-});
-
-app.get("/signup", (req, res) => {
-    return res.redirect("/html/login.html");
-});
-
-app.get("/signup.html", (req, res) => {
-    return res.redirect("/html/login.html");
-});
-
-app.get("/dashboard.html", (req, res) => {
-    return res.redirect("/html/dashboard.html");
-});
-
-app.get("/admit.html", (req, res) => {
-    return res.redirect("/html/admit.html");
-});
-
-app.post("/signup", async (req, res) => {
-    return res.status(403).json({
-        success: false,
-        message: "Public signup is disabled. Contact an administrator."
-    });
 });
 
 app.post("/login1", async (req, res) => {
@@ -411,6 +354,7 @@ app.get("/logout", (req, res) => {
 connectDB()
     .then(() => {
         app.listen(port, () => {
+            console.log("http://localhost:" + port);
             console.log("Server running on port", port);
         });
     })
@@ -418,5 +362,3 @@ connectDB()
         console.error("Failed to connect to MongoDB:", error);
         process.exit(1);
     });
-
-

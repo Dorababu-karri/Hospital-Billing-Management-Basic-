@@ -36,7 +36,9 @@ async function loadCurrentUser() {
         currentUser.appendChild(roleTag);
 
         if (meResult.user.role === "admin") {
-            document.getElementById("admin-users-link").style.display = "block";
+            const adminUsersLink = document.getElementById("admin-users-link");
+            adminUsersLink.classList.remove("u-hidden");
+            adminUsersLink.style.display = "";
         }
     } catch (error) {
         console.error("Error fetching current user:", error);
